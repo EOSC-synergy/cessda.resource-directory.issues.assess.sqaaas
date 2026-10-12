@@ -1,0 +1,46 @@
+config:
+  credentials: []
+  project_repos:
+    github.com/EOSC-synergy/sqaaas-tooling:
+      branch: fix/updatego
+      repo: https://github.com/EOSC-synergy/sqaaas-tooling
+    github.com/cessda/cessda.resource-directory.issues:
+      branch: main
+      repo: https://github.com/cessda/cessda.resource-directory.issues
+environment:
+  JPL_DOCKERFORCEBUILD: enabled
+  JPL_KEEPGOING: enabled
+sqa_criteria:
+  QC.Acc:
+    repos:
+      github.com/cessda/cessda.resource-directory.issues git:
+        commands:
+        - /usr/bin/env sh .sqa/script.crimson_diligent_manatee.sh
+        container: qc.acc_royal_proactive_osprey
+  QC.Doc:
+    repos:
+      github.com/cessda/cessda.resource-directory.issues find_doc_files.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.azure_peaceful_toucan.sh
+        container: qc.doc_jade_diplomatic_quail
+      github.com/cessda/cessda.resource-directory.issues git:
+        commands:
+        - /usr/bin/env sh .sqa/script.isabelline_funny_pelican.sh
+        container: qc.doc_wine_visionary_alpaca
+      github.com/cessda/cessda.resource-directory.issues markdownlint:
+        commands:
+        - /usr/bin/env sh .sqa/script.peach_open_sparrow.sh
+        container: qc.doc_snow_restless_chimpanzee
+  QC.Lic:
+    repos:
+      github.com/cessda/cessda.resource-directory.issues licensee:
+        commands:
+        - /usr/bin/env sh .sqa/script.gunmetal_impulsive_condor.sh
+        container: qc.lic_glaucous_reserved_octopus
+  QC.Ver:
+    repos:
+      github.com/cessda/cessda.resource-directory.issues get_git_tags.py:
+        commands:
+        - /usr/bin/env sh .sqa/script.iris_realistic_weasel.sh
+        container: qc.ver_pumpkin_amused_crocodile
+timeout: 5400
